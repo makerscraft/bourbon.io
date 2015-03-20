@@ -24,7 +24,7 @@
 
 5. Verify that the app is up and running
 
-  `% middleman server`
+  `% bundle exec middleman server`
 
   `% open http://localhost:4567`
 
