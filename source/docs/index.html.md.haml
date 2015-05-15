@@ -1,0 +1,59 @@
+---
+title: "Bourbon Documentation"
+---
+
+%nav
+  %ol
+    - data.send(version_number.to_sym).each do |item|
+      - if item.access != "private"
+        %li
+          %a{ href: "##{item.context.name}" }= item.context.name
+
+%section
+  .container
+    - data.send(version_number.to_sym).each do |item|
+      - if item.access != "private"
+        %article.docs-item{ id: item.context.name }
+          %h1.item-title
+            %code= item.context.name
+
+          - if item.context.type == "variable"
+            %pre.item-declaration
+              %code $#{item.context.name}: #{item.context.value};
+
+          - if ["mixin", "function"].include? item.context.type
+            %pre.item-declaration
+              %code @#{item.context.type} #{item.context.name}() { … }
+
+          %a{ href: "//github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/#{item.file.path}" } View Source
+
+          .item-description
+            :markdown
+              #{item.description}
+
+          - if item.parameter
+            %h2 Parameters
+            %ol.item-parameters
+              - item.parameter.each do |param|
+                %li
+                  %p.param-name
+                    %code= param.name
+                  %p.param-type= param.type
+                  - if param["default"]
+                    %p.param-default
+                      %code= param["default"]
+                  - if param.description
+                    .param-description
+                      :markdown
+                        #{param.description}
+
+          - if item.example
+            %h2 Example
+            - item.example.each do |ex|
+              %h3= ex.description
+              %pre
+                %code= ex.code
+
+          - if item.see
+            - item.see.each do |see|
+              = see.context.name

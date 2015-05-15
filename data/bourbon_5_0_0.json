@@ -16,21 +16,19 @@
     },
     "parameter": [
       {
-        "type": "Arglist",
+        "type": "arglist",
         "name": "values",
-        "description": "List of arguments\n"
+        "description": "List of colors, defined as CSS shorthand\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include border-color(#a60b55 #76cd9c null #e8ae1a);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include border-color(#a60b55 #76cd9c null #e8ae1a);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    border-left-color: #e8ae1a;\n    border-right-color: #76cd9c;\n    border-top-color: #a60b55;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  border-left-color: #e8ae1a;\n  border-right-color: #76cd9c;\n  border-top-color: #a60b55;\n}"
       }
     ],
     "require": [
@@ -40,7 +38,7 @@
         "external": false
       }
     ],
-    "output": "`border-color`",
+    "output": "`border-*-color`",
     "access": "public",
     "group": [
       "undefined"
@@ -54,34 +52,31 @@
     "description": "Provides a quick method for targeting `border-radius` on both corners on the side of a box.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 28
+      "end": 27
     },
     "context": {
       "type": "mixin",
       "name": "border-top-radius",
       "code": "\n  border-top-left-radius: $radii;\n  border-top-right-radius: $radii;\n",
       "line": {
-        "start": 30,
-        "end": 33
+        "start": 29,
+        "end": 32
       }
     },
     "parameter": [
       {
-        "type": "Number",
-        "name": "radii",
-        "description": "List of arguments\n"
+        "type": "number",
+        "name": "radii"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element-one {\n    @include border-top-radius(5px);\n  }\n\n  .element-two {\n    @include border-left-radius(3px);\n  }",
-        "description": "Usage"
+        "code": ".element-one {\n  @include border-top-radius(5px);\n}\n\n.element-two {\n  @include border-left-radius(3px);\n}"
       },
       {
         "type": "css",
-        "code": "  .element-one {\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px;\n  }\n\n  .element-two {\n    border-bottom-left-radius: 3px;\n    border-top-left-radius: 3px;\n  }",
-        "description": "CSS Output"
+        "code": ".element-one {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n}\n\n.element-two {\n  border-bottom-left-radius: 3px;\n  border-top-left-radius: 3px;\n}"
       }
     ],
     "output": "`border-radius`",
@@ -112,21 +107,19 @@
     },
     "parameter": [
       {
-        "type": "Arglist",
+        "type": "arglist",
         "name": "values",
-        "description": "List of arguments\n"
+        "description": "List of border styles, defined as CSS shorthand\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include border-style(dashed null solid);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include border-style(dashed null solid);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    border-bottom-style: solid;\n    border-top-style: dashed;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  border-bottom-style: solid;\n  border-top-style: dashed;\n}"
       }
     ],
     "require": [
@@ -136,7 +129,7 @@
         "external": false
       }
     ],
-    "output": "`border-style`",
+    "output": "`border-*-style`",
     "access": "public",
     "group": [
       "undefined"
@@ -163,21 +156,19 @@
     },
     "parameter": [
       {
-        "type": "Arglist",
+        "type": "arglist",
         "name": "values",
-        "description": "List of arguments\n"
+        "description": "List of border widths, defined as CSS shorthand\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include border-width(1em null 20px);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include border-width(1em null 20px);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    border-bottom-width: 20px;\n    border-top-width: 1em;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  border-bottom-width: 20px;\n  border-top-width: 1em;\n}"
       }
     ],
     "require": [
@@ -187,7 +178,7 @@
         "external": false
       }
     ],
-    "output": "`border-width`",
+    "output": "`border-*-width`",
     "access": "public",
     "group": [
       "undefined"
@@ -195,51 +186,6 @@
     "file": {
       "path": "addons/_border-width.scss",
       "name": "_border-width.scss"
-    }
-  },
-  {
-    "description": "Generates variables for all buttons. Please note that you must use interpolation on the variable: `#{$all-buttons}`.\n\n",
-    "commentRange": {
-      "start": 3,
-      "end": 47
-    },
-    "context": {
-      "type": "variable",
-      "name": "buttons-list",
-      "value": "'button',\n               'input[type=\"button\"]',\n               'input[type=\"reset\"]',\n               'input[type=\"submit\"]'",
-      "scope": "private",
-      "line": {
-        "start": 49,
-        "end": 52
-      }
-    },
-    "example": [
-      {
-        "type": "scss",
-        "code": "  #{$all-buttons} {\n    background-color: #f00;\n  }\n\n  #{$all-buttons-focus},\n  #{$all-buttons-hover} {\n    background-color: #0f0;\n  }\n\n  #{$all-buttons-active} {\n    background-color: #00f;\n  }",
-        "description": "Usage"
-      },
-      {
-        "type": "css",
-        "code": "  button,\n  input[type=\"button\"],\n  input[type=\"reset\"],\n  input[type=\"submit\"] {\n    background-color: #f00;\n  }\n\n  button:focus,\n  input[type=\"button\"]:focus,\n  input[type=\"reset\"]:focus,\n  input[type=\"submit\"]:focus,\n  button:hover,\n  input[type=\"button\"]:hover,\n  input[type=\"reset\"]:hover,\n  input[type=\"submit\"]:hover {\n    background-color: #0f0;\n  }\n\n  button:active,\n  input[type=\"button\"]:active,\n  input[type=\"reset\"]:active,\n  input[type=\"submit\"]:active {\n    background-color: #00f;\n  }",
-        "description": "CSS Output"
-      }
-    ],
-    "require": [
-      {
-        "type": "function",
-        "name": "assign-inputs",
-        "external": false
-      }
-    ],
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_buttons.scss",
-      "name": "_buttons.scss"
     }
   },
   {
@@ -266,13 +212,11 @@
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include clearfix;\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include clearfix;\n}"
       },
       {
         "type": "css",
-        "code": "  .element::after {\n    clear: both;\n    content: \"\";\n    display: table;\n  }",
-        "description": "CSS Output"
+        "code": ".element::after {\n  clear: both;\n  content: \"\";\n  display: table;\n}"
       }
     ],
     "access": "public",
@@ -302,22 +246,20 @@
     },
     "parameter": [
       {
-        "type": "Number",
+        "type": "number",
         "name": "width",
         "default": "100%",
-        "description": "Max-width for the string to respect before being truncated\n"
+        "description": "The `max-width` for the string to respect before being truncated\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include ellipsis;\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include ellipsis;\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    display: inline-block;\n    max-width: 100%;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    word-wrap: normal;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  display: inline-block;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  word-wrap: normal;\n}"
       }
     ],
     "access": "public",
@@ -333,136 +275,6 @@
     "file": {
       "path": "addons/_ellipsis.scss",
       "name": "_ellipsis.scss"
-    }
-  },
-  {
-    "description": "Georgia font stack.\n\n",
-    "commentRange": {
-      "start": 3,
-      "end": 5
-    },
-    "context": {
-      "type": "variable",
-      "name": "georgia",
-      "value": "\"Georgia\", \"Cambria\", \"Times New Roman\", \"Times\", serif",
-      "scope": "private",
-      "line": {
-        "start": 7,
-        "end": 7
-      }
-    },
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_font-stacks.scss",
-      "name": "_font-stacks.scss"
-    }
-  },
-  {
-    "description": "Helvetica font stack.\n\n",
-    "commentRange": {
-      "start": 9,
-      "end": 11
-    },
-    "context": {
-      "type": "variable",
-      "name": "helvetica",
-      "value": "\"Helvetica Neue\", \"Helvetica\", \"Roboto\", \"Arial\", sans-serif",
-      "scope": "private",
-      "line": {
-        "start": 13,
-        "end": 13
-      }
-    },
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_font-stacks.scss",
-      "name": "_font-stacks.scss"
-    }
-  },
-  {
-    "description": "Lucida Grande font stack.\n\n",
-    "commentRange": {
-      "start": 15,
-      "end": 17
-    },
-    "context": {
-      "type": "variable",
-      "name": "lucida-grande",
-      "value": "\"Lucida Grande\", \"Tahoma\", \"Verdana\", \"Arial\", sans-serif",
-      "scope": "private",
-      "line": {
-        "start": 19,
-        "end": 19
-      }
-    },
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_font-stacks.scss",
-      "name": "_font-stacks.scss"
-    }
-  },
-  {
-    "description": "Monospace font stack.\n\n",
-    "commentRange": {
-      "start": 21,
-      "end": 23
-    },
-    "context": {
-      "type": "variable",
-      "name": "monospace",
-      "value": "\"Bitstream Vera Sans Mono\", \"Consolas\", \"Courier\", monospace",
-      "scope": "private",
-      "line": {
-        "start": 25,
-        "end": 25
-      }
-    },
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_font-stacks.scss",
-      "name": "_font-stacks.scss"
-    }
-  },
-  {
-    "description": "Verdana font stack.\n\n",
-    "commentRange": {
-      "start": 27,
-      "end": 29
-    },
-    "context": {
-      "type": "variable",
-      "name": "verdana",
-      "value": "\"Verdana\", \"Geneva\", sans-serif",
-      "scope": "private",
-      "line": {
-        "start": 31,
-        "end": 31
-      }
-    },
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_font-stacks.scss",
-      "name": "_font-stacks.scss"
     }
   },
   {
@@ -489,13 +301,11 @@
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include hide-text;\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include hide-text;\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    overflow: hidden;\n    text-indent: 101%;\n    white-space: nowrap;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  overflow: hidden;\n  text-indent: 101%;\n  white-space: nowrap;\n}"
       }
     ],
     "access": "public",
@@ -525,21 +335,19 @@
     },
     "parameter": [
       {
-        "type": "Arglist",
+        "type": "arglist",
         "name": "values",
-        "description": "List of arguments\n"
+        "description": "List of margin values, defined as CSS shorthand\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include margin(null 10px 3em 20vh);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include margin(null 10px 3em 20vh);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    margin-bottom: 3em;\n    margin-left: 20vh;\n    margin-right: 10px;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  margin-bottom: 3em;\n  margin-left: 20vh;\n  margin-right: 10px;\n}"
       }
     ],
     "require": [
@@ -576,21 +384,19 @@
     },
     "parameter": [
       {
-        "type": "Arglist",
+        "type": "arglist",
         "name": "values",
-        "description": "List of arguments\n"
+        "description": "List of padding values, defined as CSS shorthand\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include padding(12vh null 10px 5%);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include padding(12vh null 10px 5%);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    padding-bottom: 10px;\n    padding-left: 5%;\n    padding-top: 12vh;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  padding-bottom: 10px;\n  padding-left: 5%;\n  padding-top: 12vh;\n}"
       }
     ],
     "require": [
@@ -614,41 +420,39 @@
     "description": "Provides a quick method for setting an element’s position. Use a `null` value to “skip” a side.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 24
+      "end": 25
     },
     "context": {
       "type": "mixin",
       "name": "position",
       "code": "\n  @if type-of($position) == list {\n    $coordinates: $position;\n    $position: relative;\n  }\n\n  $coordinates: unpack($coordinates);\n\n  $offsets: (\n    top:    nth($coordinates, 1),\n    right:  nth($coordinates, 2),\n    bottom: nth($coordinates, 3),\n    left:   nth($coordinates, 4)\n  );\n\n  position: $position;\n\n  @each $offset, $value in $offsets {\n    @if is-length($value) {\n      #{$offset}: $value;\n    }\n  }\n",
       "line": {
-        "start": 26,
-        "end": 48
+        "start": 27,
+        "end": 49
       }
     },
     "parameter": [
       {
-        "type": "Position",
+        "type": "position",
         "name": "position",
         "default": "relative",
         "description": "A CSS position value\n"
       },
       {
-        "type": "Arglist",
+        "type": "arglist",
         "name": "coordinates",
         "default": "null null null null",
-        "description": "List of values that correspond to the 4-value syntax for the edges of a box\n"
+        "description": "List of lengths, defined as CSS shorthand\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include position(absolute, 0 null null 10em);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include position(absolute, 0 null null 10em);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    left: 10em;\n    position: absolute;\n    top: 0;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  left: 10em;\n  position: absolute;\n  top: 0;\n}"
       }
     ],
     "require": [
@@ -683,15 +487,15 @@
           "name": "position",
           "code": "\n  @if type-of($position) == list {\n    $coordinates: $position;\n    $position: relative;\n  }\n\n  $coordinates: unpack($coordinates);\n\n  $offsets: (\n    top:    nth($coordinates, 1),\n    right:  nth($coordinates, 2),\n    bottom: nth($coordinates, 3),\n    left:   nth($coordinates, 4)\n  );\n\n  position: $position;\n\n  @each $offset, $value in $offsets {\n    @if is-length($value) {\n      #{$offset}: $value;\n    }\n  }\n",
           "line": {
-            "start": 26,
-            "end": 48
+            "start": 27,
+            "end": 49
           }
         }
       }
     ]
   },
   {
-    "description": "A mixin for generating vendor prefixes on non-standardized properties.\n\n",
+    "description": "Generates vendor prefixes.\n\n",
     "commentRange": {
       "start": 3,
       "end": 26
@@ -699,15 +503,15 @@
     "context": {
       "type": "mixin",
       "name": "prefixer",
-      "code": "\n  @each $prefix in $prefixes {\n    @if not map-has-key($global-prefixes, $prefix) {\n      @error \"Unrecognized prefix: `#{$prefix}`.\";\n    }\n\n    @if map-get($global-prefixes, $prefix) {\n      #{\"-\" + $prefix + \"-\" + $property}: $value;\n    }\n  }\n\n  #{$property}: $value;\n",
+      "code": "\n  @each $prefix in $prefixes {\n    #{\"-\" + $prefix + \"-\" + $property}: $value;\n  }\n  #{$property}: $value;\n",
       "line": {
         "start": 28,
-        "end": 40
+        "end": 33
       }
     },
     "parameter": [
       {
-        "type": "String",
+        "type": "string",
         "name": "property",
         "description": "Property to prefix\n"
       },
@@ -717,78 +521,56 @@
         "description": "Value to use\n"
       },
       {
-        "type": "List",
+        "type": "list",
         "name": "prefixes",
-        "description": "Prefixes to define\n"
+        "description": "Vendor prefixes to output\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    @include prefixer(appearance, $value, webkit moz);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  @include prefixer(appearance, none, webkit moz);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n}"
       }
     ],
-    "require": [
-      {
-        "type": "variable",
-        "name": "global-prefixes",
-        "external": false
-      }
+    "author": [
+      "Hugo Giraudel"
     ],
     "access": "public",
     "group": [
       "undefined"
     ],
-    "throw": [
-      "Unrecognized prefix: `#{$prefix}`."
-    ],
+    "require": [],
     "file": {
       "path": "addons/_prefixer.scss",
       "name": "_prefixer.scss"
-    },
-    "usedBy": [
-      {
-        "description": "Output vendor-prefixed properties for controlling platform-native styling.\n\n",
-        "context": {
-          "type": "mixin",
-          "name": "appearance",
-          "code": "\n  @include prefixer(appearance, $value, webkit moz);\n",
-          "line": {
-            "start": 21,
-            "end": 23
-          }
-        }
-      }
-    ]
+    }
   },
   {
-    "description": "",
+    "description": "Sets the `width` and `height` of the element in one statement.\n\n",
     "commentRange": {
-      "start": 6,
-      "end": 28
+      "start": 3,
+      "end": 29
     },
     "context": {
       "type": "mixin",
       "name": "size",
       "code": "\n  @if is-size($height) {\n    height: $height;\n  } @else {\n    @error \"`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.\";\n  }\n\n  @if is-size($width) {\n    width: $width;\n  } @else {\n    @error \"`#{$width}` is not a valid length for the `$width` parameter in the `size` mixin.\";\n  }\n",
       "line": {
-        "start": 30,
-        "end": 42
+        "start": 31,
+        "end": 43
       }
     },
     "parameter": [
       {
-        "type": "Number",
+        "type": "number",
         "name": "width"
       },
       {
-        "type": "Number",
+        "type": "number",
         "name": "height",
         "default": "$width"
       }
@@ -796,24 +578,23 @@
     "example": [
       {
         "type": "scss",
-        "code": "  .first-element {\n    @include size(2em);\n  }\n\n  .second-element {\n    @include size(auto, 10em);\n  }",
-        "description": "Usage"
+        "code": ".first-element {\n  @include size(2em);\n}\n\n.second-element {\n  @include size(auto, 10em);\n}"
       },
       {
         "type": "css",
-        "code": "  .first-element {\n    width: 2em;\n    height: 2em;\n  }\n\n  .second-element {\n    width: auto;\n    height: 10em;\n  }",
-        "description": "CSS Output"
+        "code": ".first-element {\n  width: 2em;\n  height: 2em;\n}\n\n.second-element {\n  width: auto;\n  height: 10em;\n}"
+      }
+    ],
+    "require": [
+      {
+        "type": "function",
+        "name": "is-size",
+        "external": false
       }
     ],
     "access": "public",
     "group": [
       "undefined"
-    ],
-    "require": [
-      {
-        "type": "function",
-        "name": "is-size"
-      }
     ],
     "throw": [
       "`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.",
@@ -822,83 +603,6 @@
     "file": {
       "path": "addons/_size.scss",
       "name": "_size.scss"
-    }
-  },
-  {
-    "description": "Generates variables for all text-based inputs. Please note that you must use interpolation on the variable: `#{$all-text-inputs}`.\n\n",
-    "commentRange": {
-      "start": 3,
-      "end": 91
-    },
-    "context": {
-      "type": "variable",
-      "name": "text-inputs-list",
-      "value": "'input[type=\"color\"]',\n                   'input[type=\"date\"]',\n                   'input[type=\"datetime\"]',\n                   'input[type=\"datetime-local\"]',\n                   'input[type=\"email\"]',\n                   'input[type=\"month\"]',\n                   'input[type=\"number\"]',\n                   'input[type=\"password\"]',\n                   'input[type=\"search\"]',\n                   'input[type=\"tel\"]',\n                   'input[type=\"text\"]',\n                   'input[type=\"time\"]',\n                   'input[type=\"url\"]',\n                   'input[type=\"week\"]',\n                   'textarea'",
-      "scope": "private",
-      "line": {
-        "start": 93,
-        "end": 107
-      }
-    },
-    "example": [
-      {
-        "type": "scss",
-        "code": "  #{$all-text-inputs} {\n    border: 1px solid #f00;\n  }\n\n  #{$all-text-inputs-focus},\n  #{$all-text-inputs-hover} {\n    border: 1px solid #0f0;\n  }\n\n  #{$all-text-inputs-active} {\n    border: 1px solid #00f;\n  }",
-        "description": "Usage"
-      },
-      {
-        "type": "css",
-        "code": "  input[type=\"color\"],\n  input[type=\"date\"],\n  input[type=\"datetime\"],\n  input[type=\"datetime-local\"],\n  input[type=\"email\"],\n  input[type=\"month\"],\n  input[type=\"number\"],\n  input[type=\"password\"],\n  input[type=\"search\"],\n  input[type=\"tel\"],\n  input[type=\"text\"],\n  input[type=\"time\"],\n  input[type=\"url\"],\n  input[type=\"week\"],\n  textarea {\n    border: 1px solid #f00;\n  }\n\n  input[type=\"color\"]:focus,\n  input[type=\"date\"]:focus,\n  input[type=\"datetime\"]:focus,\n  input[type=\"datetime-local\"]:focus,\n  input[type=\"email\"]:focus,\n  input[type=\"month\"]:focus,\n  input[type=\"number\"]:focus,\n  input[type=\"password\"]:focus,\n  input[type=\"search\"]:focus,\n  input[type=\"tel\"]:focus,\n  input[type=\"text\"]:focus,\n  input[type=\"time\"]:focus,\n  input[type=\"url\"]:focus,\n  input[type=\"week\"]:focus,\n  textarea:focus,\n  input[type=\"color\"]:hover,\n  input[type=\"date\"]:hover,\n  input[type=\"datetime\"]:hover,\n  input[type=\"datetime-local\"]:hover,\n  input[type=\"email\"]:hover,\n  input[type=\"month\"]:hover,\n  input[type=\"number\"]:hover,\n  input[type=\"password\"]:hover,\n  input[type=\"search\"]:hover,\n  input[type=\"tel\"]:hover,\n  input[type=\"text\"]:hover,\n  input[type=\"time\"]:hover,\n  input[type=\"url\"]:hover,\n  input[type=\"week\"]:hover,\n  textarea:hover {\n    border: 1px solid #0f0;\n  }\n\n  input[type=\"color\"]:active,\n  input[type=\"date\"]:active,\n  input[type=\"datetime\"]:active,\n  input[type=\"datetime-local\"]:active,\n  input[type=\"email\"]:active,\n  input[type=\"month\"]:active,\n  input[type=\"number\"]:active,\n  input[type=\"password\"]:active,\n  input[type=\"search\"]:active,\n  input[type=\"tel\"]:active,\n  input[type=\"text\"]:active,\n  input[type=\"time\"]:active,\n  input[type=\"url\"]:active,\n  input[type=\"week\"]:active,\n  textarea:active {\n    border: 1px solid #00f;\n  }",
-        "description": "CSS Output"
-      }
-    ],
-    "require": [
-      {
-        "type": "function",
-        "name": "assign-inputs",
-        "external": false
-      }
-    ],
-    "type": "List",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_text-inputs.scss",
-      "name": "_text-inputs.scss"
-    }
-  },
-  {
-    "description": "CSS cubic-bezier timing functions.\n\n",
-    "commentRange": {
-      "start": 3,
-      "end": 7
-    },
-    "context": {
-      "type": "variable",
-      "name": "ease-in-quad",
-      "value": "cubic-bezier(0.550,  0.085, 0.680, 0.530)",
-      "scope": "private",
-      "line": {
-        "start": 9,
-        "end": 9
-      }
-    },
-    "link": [
-      {
-        "url": "http://goo.gl/p8u6SK",
-        "caption": ""
-      }
-    ],
-    "type": "cubic-bezier",
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "addons/_timing-functions.scss",
-      "name": "_timing-functions.scss"
     }
   },
   {
@@ -918,7 +622,7 @@
     },
     "parameter": [
       {
-        "type": "String",
+        "type": "string",
         "name": "wrap",
         "default": "break-word",
         "description": "Value for the `word-break` property.\n"
@@ -927,13 +631,11 @@
     "example": [
       {
         "type": "scss",
-        "code": "  .wrapper {\n    @include word-wrap(break-word);\n  }",
-        "description": "Usage"
+        "code": ".wrapper {\n  @include word-wrap(break-word);\n}"
       },
       {
         "type": "css",
-        "code": "  .wrapper {\n    overflow-wrap: break-word;\n    word-break: break-all;\n    word-wrap: break-word;\n  }",
-        "description": "CSS Output"
+        "code": ".wrapper {\n  overflow-wrap: break-word;\n  word-break: break-all;\n  word-wrap: break-word;\n}"
       }
     ],
     "access": "public",
@@ -978,43 +680,61 @@
     ]
   },
   {
-    "description": "Output vendor-prefixed properties for controlling platform-native styling.\n\n",
+    "description": "Generates an @font-face declaration. Accepts arugments for weight, style, usage with the Rails Asset Pipeline and file formats.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 19
+      "end": 25
     },
     "context": {
       "type": "mixin",
-      "name": "appearance",
-      "code": "\n  @include prefixer(appearance, $value, webkit moz);\n",
+      "name": "font-face",
+      "code": "\n\n  $font-url-prefix: font-url-prefixer($asset-pipeline);\n\n  @font-face {\n    font-family: $font-family;\n    font-style: $style;\n    font-weight: $weight;\n\n    src: font-source-declaration(\n      $font-family,\n      $file-path,\n      $asset-pipeline,\n      $file-formats,\n      $font-url-prefix\n    );\n  }\n",
       "line": {
-        "start": 21,
-        "end": 23
+        "start": 27,
+        "end": 50
       }
     },
     "parameter": [
       {
-        "type": "String",
-        "name": "width"
+        "type": "string",
+        "name": "font-family"
+      },
+      {
+        "type": "string",
+        "name": "file-path"
+      },
+      {
+        "type": "string",
+        "name": "weight",
+        "default": "normal"
+      },
+      {
+        "type": "string",
+        "name": "asset-pipeline",
+        "default": "$asset-pipeline",
+        "description": "`$asset-pipeline` is set to `false` by default. You can pass in `true` to use the Rails Asset Pipeline (place the fonts in `app/assets/fonts/')."
+      },
+      {
+        "type": "list",
+        "name": "file-formats",
+        "default": "$global-font-file-formats",
+        "description": "`$global-font-file-formats` is set to `null` by default. Pass a list of file formats to support. E.g. `eot woff2 woff ttf svg`.\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  input {\n    @include appearance(none);\n  }",
-        "description": "Usage"
+        "code": "scss"
       },
       {
-        "type": "css",
-        "code": "  input {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n  }",
-        "description": "CSS Output"
+        "type": "scss",
+        "code": "css"
       }
     ],
     "require": [
       {
-        "type": "mixin",
-        "name": "prefixer",
-        "external": false
+        "type": "variable",
+        "name": "asset-pipeline"
       }
     ],
     "access": "public",
@@ -1022,26 +742,42 @@
       "undefined"
     ],
     "file": {
-      "path": "css3/_appearance.scss",
-      "name": "_appearance.scss"
+      "path": "css3/_font-face.scss",
+      "name": "_font-face.scss"
     }
   },
   {
-    "description": "Assign inputs description…\n",
+    "description": "Append pseudo-classes to a selector(s).\n\n",
     "commentRange": {
       "start": 3,
-      "end": 3
+      "end": 13
     },
     "context": {
       "type": "function",
       "name": "assign-inputs",
       "code": "\n  $list: ();\n\n  @each $input in $inputs {\n    $input: unquote($input);\n    $input: if($pseudo, $input + \":\" + $pseudo, $input);\n    $list: append($list, $input, comma);\n  }\n\n  @return $list;\n",
       "line": {
-        "start": 5,
-        "end": 15
+        "start": 15,
+        "end": 25
       }
     },
-    "access": "public",
+    "access": "private",
+    "parameter": [
+      {
+        "type": "list | string",
+        "name": "inputs",
+        "description": "A selector, or list of selectors, to apply the pseudo-class to\n"
+      },
+      {
+        "type": "pseudo-class",
+        "name": "pseudo",
+        "default": "null",
+        "description": "The pseudo-class to be appended\n"
+      }
+    ],
+    "return": {
+      "type": "list"
+    },
     "group": [
       "undefined"
     ],
@@ -1049,35 +785,7 @@
     "file": {
       "path": "functions/_assign-inputs.scss",
       "name": "_assign-inputs.scss"
-    },
-    "usedBy": [
-      {
-        "description": "Generates variables for all buttons. Please note that you must use interpolation on the variable: `#{$all-buttons}`.\n\n",
-        "context": {
-          "type": "variable",
-          "name": "buttons-list",
-          "value": "'button',\n               'input[type=\"button\"]',\n               'input[type=\"reset\"]',\n               'input[type=\"submit\"]'",
-          "scope": "private",
-          "line": {
-            "start": 49,
-            "end": 52
-          }
-        }
-      },
-      {
-        "description": "Generates variables for all text-based inputs. Please note that you must use interpolation on the variable: `#{$all-text-inputs}`.\n\n",
-        "context": {
-          "type": "variable",
-          "name": "text-inputs-list",
-          "value": "'input[type=\"color\"]',\n                   'input[type=\"date\"]',\n                   'input[type=\"datetime\"]',\n                   'input[type=\"datetime-local\"]',\n                   'input[type=\"email\"]',\n                   'input[type=\"month\"]',\n                   'input[type=\"number\"]',\n                   'input[type=\"password\"]',\n                   'input[type=\"search\"]',\n                   'input[type=\"tel\"]',\n                   'input[type=\"text\"]',\n                   'input[type=\"time\"]',\n                   'input[type=\"url\"]',\n                   'input[type=\"week\"]',\n                   'textarea'",
-          "scope": "private",
-          "line": {
-            "start": 93,
-            "end": 107
-          }
-        }
-      }
-    ]
+    }
   },
   {
     "description": "Checks if a list does not contains a value.\n\n",
@@ -1097,13 +805,13 @@
     "access": "private",
     "parameter": [
       {
-        "type": "List",
+        "type": "list",
         "name": "list",
         "description": "The list to check against.\n"
       }
     ],
     "return": {
-      "type": "Bool"
+      "type": "boolean"
     },
     "group": [
       "undefined"
@@ -1131,7 +839,7 @@
         "context": {
           "type": "mixin",
           "name": "directional-property",
-          "code": "\n  // Property Names\n  $top:    $pre + \"-top\"    + if($suf, \"-#{$suf}\", \"\");\n  $bottom: $pre + \"-bottom\" + if($suf, \"-#{$suf}\", \"\");\n  $left:   $pre + \"-left\"   + if($suf, \"-#{$suf}\", \"\");\n  $right:  $pre + \"-right\"  + if($suf, \"-#{$suf}\", \"\");\n  $all:    $pre +             if($suf, \"-#{$suf}\", \"\");\n\n  $values: collapse-directionals($values);\n\n  @if contains-falsy($values) {\n    @if nth($values, 1) { #{$top}: nth($values, 1); }\n\n    @if length($values) == 1 {\n      @if nth($values, 1) { #{$right}: nth($values, 1); }\n    } @else {\n      @if nth($values, 2) { #{$right}: nth($values, 2); }\n    }\n\n    @if length($values) == 2 {\n      @if nth($values, 1) { #{$bottom}: nth($values, 1); }\n      @if nth($values, 2) { #{$left}:   nth($values, 2); }\n    } @else if length($values) == 3 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 2) { #{$left}:   nth($values, 2); }\n    } @else if length($values) == 4 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 4) { #{$left}:   nth($values, 4); }\n    }\n  } @else {\n    #{$all}: $values;\n  }\n",
+          "code": "\n  // Property Names\n  $top:    $pre + \"-top\"    + if($suf, \"-#{$suf}\", \"\");\n  $bottom: $pre + \"-bottom\" + if($suf, \"-#{$suf}\", \"\");\n  $left:   $pre + \"-left\"   + if($suf, \"-#{$suf}\", \"\");\n  $right:  $pre + \"-right\"  + if($suf, \"-#{$suf}\", \"\");\n  $all:    $pre +             if($suf, \"-#{$suf}\", \"\");\n\n  $values: collapse-directionals($values);\n\n  @if contains-falsy($values) {\n    @if nth($values, 1) { #{$top}: nth($values, 1); }\n\n    @if length($values) == 1 {\n      @if nth($values, 1) { #{$right}: nth($values, 1); }\n    } @else {\n      @if nth($values, 2) { #{$right}: nth($values, 2); }\n    }\n\n    @if length($values) == 2 {\n      @if nth($values, 1) { #{$bottom}: nth($values, 1); }\n      @if nth($values, 2) { #{$left}: nth($values, 2); }\n    } @else if length($values) == 3 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 2) { #{$left}: nth($values, 2); }\n    } @else if length($values) == 4 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 4) { #{$left}: nth($values, 4); }\n    }\n  } @else {\n    #{$all}: $values;\n  }\n",
           "line": {
             "start": 64,
             "end": 96
@@ -1144,39 +852,32 @@
     "description": "Checks if a list contains a value(s).\n\n",
     "commentRange": {
       "start": 3,
-      "end": 16
+      "end": 13
     },
     "context": {
       "type": "function",
       "name": "contains",
       "code": "\n  @each $value in $values {\n    @if type-of(index($list, $value)) != \"number\" {\n      @return false;\n    }\n  }\n\n  @return true;\n",
       "line": {
-        "start": 18,
-        "end": 26
+        "start": 15,
+        "end": 23
       }
     },
     "access": "private",
     "parameter": [
       {
-        "type": "List",
+        "type": "list",
         "name": "list",
         "description": "The list to check against.\n"
       },
       {
-        "type": "List",
+        "type": "list",
         "name": "values",
         "description": "A single value or list of values to check for.\n"
       }
     ],
-    "example": [
-      {
-        "type": "scss",
-        "code": "  contains($list, $value)",
-        "description": "Usage"
-      }
-    ],
     "return": {
-      "type": "Bool"
+      "type": "boolean"
     },
     "group": [
       "undefined"
@@ -1194,8 +895,8 @@
           "name": "is-number",
           "code": "\n  @return contains(\"0\" \"1\" \"2\" \"3\" \"4\" \"5\" \"6\" \"7\" \"8\" \"9\" 0 1 2 3 4 5 6 7 8 9, $value);\n",
           "line": {
-            "start": 9,
-            "end": 11
+            "start": 11,
+            "end": 13
           }
         }
       },
@@ -1206,8 +907,8 @@
           "name": "is-size",
           "code": "\n  @return is-length($value)\n          or contains(\"fill\" \"fit-content\" \"min-content\" \"max-content\", $value);\n",
           "line": {
-            "start": 10,
-            "end": 13
+            "start": 13,
+            "end": 16
           }
         }
       }
@@ -1217,24 +918,24 @@
     "description": "Checks for a valid CSS length.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 5
+      "end": 7
     },
     "context": {
       "type": "function",
       "name": "is-length",
       "code": "\n  @return type-of($value) != \"null\" and (str-slice($value + \"\", 1, 4) == \"calc\"\n       or index(auto inherit initial 0, $value)\n       or (type-of($value) == \"number\" and not(unitless($value))));\n",
       "line": {
-        "start": 7,
-        "end": 11
+        "start": 9,
+        "end": 13
       }
     },
+    "access": "private",
     "parameter": [
       {
-        "type": "String",
+        "type": "string",
         "name": "value"
       }
     ],
-    "access": "public",
     "group": [
       "undefined"
     ],
@@ -1251,8 +952,8 @@
           "name": "position",
           "code": "\n  @if type-of($position) == list {\n    $coordinates: $position;\n    $position: relative;\n  }\n\n  $coordinates: unpack($coordinates);\n\n  $offsets: (\n    top:    nth($coordinates, 1),\n    right:  nth($coordinates, 2),\n    bottom: nth($coordinates, 3),\n    left:   nth($coordinates, 4)\n  );\n\n  position: $position;\n\n  @each $offset, $value in $offsets {\n    @if is-length($value) {\n      #{$offset}: $value;\n    }\n  }\n",
           "line": {
-            "start": 26,
-            "end": 48
+            "start": 27,
+            "end": 49
           }
         }
       },
@@ -1263,8 +964,8 @@
           "name": "is-size",
           "code": "\n  @return is-length($value)\n          or contains(\"fill\" \"fit-content\" \"min-content\" \"max-content\", $value);\n",
           "line": {
-            "start": 10,
-            "end": 13
+            "start": 13,
+            "end": 16
           }
         }
       }
@@ -1293,19 +994,18 @@
     ],
     "parameter": [
       {
-        "type": "Color (Hex)",
-        "name": "color"
+        "type": "color (hex)",
+        "name": "hex-color"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  is-light($color)",
-        "description": "Usage"
+        "code": "is-light($color)"
       }
     ],
     "return": {
-      "type": "Bool"
+      "type": "boolean"
     },
     "access": "public",
     "group": [
@@ -1321,20 +1021,21 @@
     "description": "Checks for a valid number.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 7
+      "end": 9
     },
     "context": {
       "type": "function",
       "name": "is-number",
       "code": "\n  @return contains(\"0\" \"1\" \"2\" \"3\" \"4\" \"5\" \"6\" \"7\" \"8\" \"9\" 0 1 2 3 4 5 6 7 8 9, $value);\n",
       "line": {
-        "start": 9,
-        "end": 11
+        "start": 11,
+        "end": 13
       }
     },
+    "access": "private",
     "parameter": [
       {
-        "type": "Number",
+        "type": "number",
         "name": "value"
       }
     ],
@@ -1345,7 +1046,6 @@
         "external": false
       }
     ],
-    "access": "public",
     "group": [
       "undefined"
     ],
@@ -1358,20 +1058,21 @@
     "description": "Checks for a valid CSS size.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 8
+      "end": 11
     },
     "context": {
       "type": "function",
       "name": "is-size",
       "code": "\n  @return is-length($value)\n          or contains(\"fill\" \"fit-content\" \"min-content\" \"max-content\", $value);\n",
       "line": {
-        "start": 10,
-        "end": 13
+        "start": 13,
+        "end": 16
       }
     },
+    "access": "private",
     "parameter": [
       {
-        "type": "String",
+        "type": "string",
         "name": "value"
       }
     ],
@@ -1387,7 +1088,6 @@
         "external": false
       }
     ],
-    "access": "public",
     "group": [
       "undefined"
     ],
@@ -1397,14 +1097,14 @@
     },
     "usedBy": [
       {
-        "description": "",
+        "description": "Sets the `width` and `height` of the element in one statement.\n\n",
         "context": {
           "type": "mixin",
           "name": "size",
           "code": "\n  @if is-size($height) {\n    height: $height;\n  } @else {\n    @error \"`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.\";\n  }\n\n  @if is-size($width) {\n    width: $width;\n  } @else {\n    @error \"`#{$width}` is not a valid length for the `$width` parameter in the `size` mixin.\";\n  }\n",
           "line": {
-            "start": 30,
-            "end": 42
+            "start": 31,
+            "end": 43
           }
         }
       }
@@ -1414,48 +1114,48 @@
     "description": "Increments up or down a defined scale and returns an adjusted value. This helps establish consistent measurements and spacial relationships throughout your project. We provide a list of commonly used scales as [pre-defined variables](//github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/settings/_scales.scss).\n\n",
     "commentRange": {
       "start": 3,
-      "end": 50
+      "end": 53
     },
     "context": {
       "type": "function",
       "name": "modular-scale",
-      "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check after scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
+      "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check AFTER scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
       "line": {
-        "start": 52,
-        "end": 98
+        "start": 55,
+        "end": 101
       }
     },
     "parameter": [
       {
-        "type": "Number",
+        "type": "number",
         "name": "increment",
         "description": "How many steps to increment up or down the scale\n"
       },
       {
-        "type": "Number",
+        "type": "number",
         "name": "value",
-        "default": "$modular-scale-base (1em)"
+        "default": "$modular-scale-base (1em)",
+        "description": "The base value the scale starts at\n"
       },
       {
-        "type": "Number",
+        "type": "number",
         "name": "ratio",
-        "default": "$modular-scale-ratio (1.333)"
+        "default": "$modular-scale-ratio (1.333)",
+        "description": "The ratio the scale is built on\n"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .first-element {\n    font-size: modular-scale(2);\n  }\n\n  .second-element {\n    margin-right: modular-scale(3, 2em);\n  }\n\n  .third-element {\n    font-size: modular-scale(3, 1em 1.6em, $major-seventh);\n  }\n\n  $modular-scale-ratio: 1.2; // change the base ratio\n  .fourth-element {\n    font-size: modular-scale(3);\n  }",
-        "description": "Usage"
+        "code": ".first-element {\n  font-size: modular-scale(2);\n}\n\n.second-element {\n  margin-right: modular-scale(3, 2em);\n}\n\n.third-element {\n  font-size: modular-scale(3, 1em 1.6em, $major-seventh);\n}\n\n$modular-scale-ratio: 1.2; // change the base ratio\n.fourth-element {\n  font-size: modular-scale(3);\n}"
       },
       {
         "type": "css",
-        "code": "  .first-element {\n    font-size: 1.77689em;\n  }\n\n  .second-element {\n    margin-right: 4.73719em;\n  }\n\n  .third-element {\n    font-size: 3em;\n  }\n\n  .fourth-element {\n    font-size: 1.728em;\n  }",
-        "description": "CSS Output"
+        "code": ".first-element {\n  font-size: 1.77689em;\n}\n\n.second-element {\n  margin-right: 4.73719em;\n}\n\n.third-element {\n  font-size: 3em;\n}\n\n.fourth-element {\n  font-size: 1.728em;\n}"
       }
     ],
     "return": {
-      "type": "Number"
+      "type": "number"
     },
     "require": [
       {
@@ -1495,11 +1195,11 @@
     },
     "parameter": [
       {
-        "type": "Color",
+        "type": "color",
         "name": "color"
       },
       {
-        "type": "Number (Percentage)",
+        "type": "number (percentage)",
         "name": "percent",
         "description": "The amount of black to be mixed in.\n"
       }
@@ -1507,17 +1207,15 @@
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    background-color: shade(#ffbb52, 60%);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  background-color: shade(#ffbb52, 60%);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    background-color: #664a20;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  background-color: #664a20;\n}"
       }
     ],
     "return": {
-      "type": "Color"
+      "type": "color"
     },
     "access": "public",
     "group": [
@@ -1546,24 +1244,22 @@
     },
     "parameter": [
       {
-        "type": "Number (With Unit)",
+        "type": "number",
         "name": "value"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  $dimension: strip-unit(10em);",
-        "description": "Usage"
+        "code": "$dimension: strip-unit(10em);"
       },
       {
         "type": "css",
-        "code": "  $dimension: 10;",
-        "description": "CSS Output"
+        "code": "$dimension: 10;"
       }
     ],
     "return": {
-      "type": "Number (Unitless)"
+      "type": "number"
     },
     "access": "public",
     "group": [
@@ -1592,11 +1288,11 @@
     },
     "parameter": [
       {
-        "type": "Color",
+        "type": "color",
         "name": "color"
       },
       {
-        "type": "Number (Percentage)",
+        "type": "number (percentage)",
         "name": "percent",
         "description": "The amount of white to be mixed in.\n"
       }
@@ -1604,17 +1300,15 @@
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    background-color: tint(#6ecaa6, 40%);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  background-color: tint(#6ecaa6, 40%);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    background-color: #a8dfc9;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  background-color: #a8dfc9;\n}"
       }
     ],
     "return": {
-      "type": "Color"
+      "type": "color"
     },
     "access": "public",
     "group": [
@@ -1630,36 +1324,34 @@
     "description": "Converts shorthand to the 4-value syntax.\n\n",
     "commentRange": {
       "start": 3,
-      "end": 15
+      "end": 17
     },
     "context": {
       "type": "function",
       "name": "unpack",
       "code": "\n  @if length($shorthand) == 1 {\n    @return nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1);\n  } @else if length($shorthand) == 2 {\n    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 1) nth($shorthand, 2);\n  } @else if length($shorthand) == 3 {\n    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 3) nth($shorthand, 2);\n  } @else {\n    @return $shorthand;\n  }\n",
       "line": {
-        "start": 17,
-        "end": 27
+        "start": 19,
+        "end": 29
       }
     },
+    "access": "private",
     "parameter": [
       {
-        "type": "List",
+        "type": "list",
         "name": "shorthand"
       }
     ],
     "example": [
       {
         "type": "scss",
-        "code": "  .element {\n    margin: unpack(1em 2em);\n  }",
-        "description": "Usage"
+        "code": ".element {\n  margin: unpack(1em 2em);\n}"
       },
       {
         "type": "css",
-        "code": "  .element {\n    margin: 1em 2em 1em 2em;\n  }",
-        "description": "CSS Output"
+        "code": ".element {\n  margin: 1em 2em 1em 2em;\n}"
       }
     ],
-    "access": "public",
     "group": [
       "undefined"
     ],
@@ -1676,8 +1368,8 @@
           "name": "position",
           "code": "\n  @if type-of($position) == list {\n    $coordinates: $position;\n    $position: relative;\n  }\n\n  $coordinates: unpack($coordinates);\n\n  $offsets: (\n    top:    nth($coordinates, 1),\n    right:  nth($coordinates, 2),\n    bottom: nth($coordinates, 3),\n    left:   nth($coordinates, 4)\n  );\n\n  position: $position;\n\n  @each $offset, $value in $offsets {\n    @if is-length($value) {\n      #{$offset}: $value;\n    }\n  }\n",
           "line": {
-            "start": 26,
-            "end": 48
+            "start": 27,
+            "end": 49
           }
         }
       }
@@ -1742,7 +1434,7 @@
         "context": {
           "type": "mixin",
           "name": "directional-property",
-          "code": "\n  // Property Names\n  $top:    $pre + \"-top\"    + if($suf, \"-#{$suf}\", \"\");\n  $bottom: $pre + \"-bottom\" + if($suf, \"-#{$suf}\", \"\");\n  $left:   $pre + \"-left\"   + if($suf, \"-#{$suf}\", \"\");\n  $right:  $pre + \"-right\"  + if($suf, \"-#{$suf}\", \"\");\n  $all:    $pre +             if($suf, \"-#{$suf}\", \"\");\n\n  $values: collapse-directionals($values);\n\n  @if contains-falsy($values) {\n    @if nth($values, 1) { #{$top}: nth($values, 1); }\n\n    @if length($values) == 1 {\n      @if nth($values, 1) { #{$right}: nth($values, 1); }\n    } @else {\n      @if nth($values, 2) { #{$right}: nth($values, 2); }\n    }\n\n    @if length($values) == 2 {\n      @if nth($values, 1) { #{$bottom}: nth($values, 1); }\n      @if nth($values, 2) { #{$left}:   nth($values, 2); }\n    } @else if length($values) == 3 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 2) { #{$left}:   nth($values, 2); }\n    } @else if length($values) == 4 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 4) { #{$left}:   nth($values, 4); }\n    }\n  } @else {\n    #{$all}: $values;\n  }\n",
+          "code": "\n  // Property Names\n  $top:    $pre + \"-top\"    + if($suf, \"-#{$suf}\", \"\");\n  $bottom: $pre + \"-bottom\" + if($suf, \"-#{$suf}\", \"\");\n  $left:   $pre + \"-left\"   + if($suf, \"-#{$suf}\", \"\");\n  $right:  $pre + \"-right\"  + if($suf, \"-#{$suf}\", \"\");\n  $all:    $pre +             if($suf, \"-#{$suf}\", \"\");\n\n  $values: collapse-directionals($values);\n\n  @if contains-falsy($values) {\n    @if nth($values, 1) { #{$top}: nth($values, 1); }\n\n    @if length($values) == 1 {\n      @if nth($values, 1) { #{$right}: nth($values, 1); }\n    } @else {\n      @if nth($values, 2) { #{$right}: nth($values, 2); }\n    }\n\n    @if length($values) == 2 {\n      @if nth($values, 1) { #{$bottom}: nth($values, 1); }\n      @if nth($values, 2) { #{$left}: nth($values, 2); }\n    } @else if length($values) == 3 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 2) { #{$left}: nth($values, 2); }\n    } @else if length($values) == 4 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 4) { #{$left}: nth($values, 4); }\n    }\n  } @else {\n    #{$all}: $values;\n  }\n",
           "line": {
             "start": 64,
             "end": 96
@@ -1760,7 +1452,7 @@
     "context": {
       "type": "mixin",
       "name": "directional-property",
-      "code": "\n  // Property Names\n  $top:    $pre + \"-top\"    + if($suf, \"-#{$suf}\", \"\");\n  $bottom: $pre + \"-bottom\" + if($suf, \"-#{$suf}\", \"\");\n  $left:   $pre + \"-left\"   + if($suf, \"-#{$suf}\", \"\");\n  $right:  $pre + \"-right\"  + if($suf, \"-#{$suf}\", \"\");\n  $all:    $pre +             if($suf, \"-#{$suf}\", \"\");\n\n  $values: collapse-directionals($values);\n\n  @if contains-falsy($values) {\n    @if nth($values, 1) { #{$top}: nth($values, 1); }\n\n    @if length($values) == 1 {\n      @if nth($values, 1) { #{$right}: nth($values, 1); }\n    } @else {\n      @if nth($values, 2) { #{$right}: nth($values, 2); }\n    }\n\n    @if length($values) == 2 {\n      @if nth($values, 1) { #{$bottom}: nth($values, 1); }\n      @if nth($values, 2) { #{$left}:   nth($values, 2); }\n    } @else if length($values) == 3 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 2) { #{$left}:   nth($values, 2); }\n    } @else if length($values) == 4 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 4) { #{$left}:   nth($values, 4); }\n    }\n  } @else {\n    #{$all}: $values;\n  }\n",
+      "code": "\n  // Property Names\n  $top:    $pre + \"-top\"    + if($suf, \"-#{$suf}\", \"\");\n  $bottom: $pre + \"-bottom\" + if($suf, \"-#{$suf}\", \"\");\n  $left:   $pre + \"-left\"   + if($suf, \"-#{$suf}\", \"\");\n  $right:  $pre + \"-right\"  + if($suf, \"-#{$suf}\", \"\");\n  $all:    $pre +             if($suf, \"-#{$suf}\", \"\");\n\n  $values: collapse-directionals($values);\n\n  @if contains-falsy($values) {\n    @if nth($values, 1) { #{$top}: nth($values, 1); }\n\n    @if length($values) == 1 {\n      @if nth($values, 1) { #{$right}: nth($values, 1); }\n    } @else {\n      @if nth($values, 2) { #{$right}: nth($values, 2); }\n    }\n\n    @if length($values) == 2 {\n      @if nth($values, 1) { #{$bottom}: nth($values, 1); }\n      @if nth($values, 2) { #{$left}: nth($values, 2); }\n    } @else if length($values) == 3 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 2) { #{$left}: nth($values, 2); }\n    } @else if length($values) == 4 {\n      @if nth($values, 3) { #{$bottom}: nth($values, 3); }\n      @if nth($values, 4) { #{$left}: nth($values, 4); }\n    }\n  } @else {\n    #{$all}: $values;\n  }\n",
       "line": {
         "start": 64,
         "end": 96
@@ -1882,7 +1574,7 @@
         "end": 7
       }
     },
-    "type": "Bool",
+    "type": "boolean",
     "access": "public",
     "group": [
       "undefined"
@@ -1890,52 +1582,73 @@
     "file": {
       "path": "settings/_asset-pipeline.scss",
       "name": "_asset-pipeline.scss"
-    }
-  },
-  {
-    "description": "Global variables to enable or disable vendor prefixes\n",
-    "commentRange": {
-      "start": 3,
-      "end": 3
-    },
-    "context": {
-      "type": "variable",
-      "name": "global-prefixes",
-      "value": "(\n  \"webkit\": true,\n  \"moz\": true,\n  \"ms\": true,\n  \"o\": true\n)",
-      "scope": "default",
-      "line": {
-        "start": 5,
-        "end": 10
-      }
-    },
-    "access": "public",
-    "group": [
-      "undefined"
-    ],
-    "file": {
-      "path": "settings/_global-prefixes.scss",
-      "name": "_global-prefixes.scss"
     },
     "usedBy": [
       {
-        "description": "A mixin for generating vendor prefixes on non-standardized properties.\n\n",
+        "description": "Generates an @font-face declaration. Accepts arugments for weight, style, usage with the Rails Asset Pipeline and file formats.\n\n",
         "context": {
           "type": "mixin",
-          "name": "prefixer",
-          "code": "\n  @each $prefix in $prefixes {\n    @if not map-has-key($global-prefixes, $prefix) {\n      @error \"Unrecognized prefix: `#{$prefix}`.\";\n    }\n\n    @if map-get($global-prefixes, $prefix) {\n      #{\"-\" + $prefix + \"-\" + $property}: $value;\n    }\n  }\n\n  #{$property}: $value;\n",
+          "name": "font-face",
+          "code": "\n\n  $font-url-prefix: font-url-prefixer($asset-pipeline);\n\n  @font-face {\n    font-family: $font-family;\n    font-style: $style;\n    font-weight: $weight;\n\n    src: font-source-declaration(\n      $font-family,\n      $file-path,\n      $asset-pipeline,\n      $file-formats,\n      $font-url-prefix\n    );\n  }\n",
           "line": {
-            "start": 28,
-            "end": 40
+            "start": 27,
+            "end": 50
           }
         }
       }
     ]
   },
   {
-    "description": "Global settings for the modular scale function\n",
+    "description": "A global setting for font file formats for the `font-face` mixin.\n\n",
     "commentRange": {
-      "start": 21,
-      "end": 21
+      "start": 3,
+      "end": 10
+    },
+    "context": {
+      "type": "variable",
+      "name": "global-font-file-formats",
+      "value": "ttf woff2 woff",
+      "scope": "default",
+      "line": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    "see": [
+      {
+        "description": "Generates an @font-face declaration. Accepts arugments for weight, style, usage with the Rails Asset Pipeline and file formats.\n\n",
+        "context": {
+          "type": "mixin",
+          "name": "font-face",
+          "code": "\n\n  $font-url-prefix: font-url-prefixer($asset-pipeline);\n\n  @font-face {\n    font-family: $font-family;\n    font-style: $style;\n    font-weight: $weight;\n\n    src: font-source-declaration(\n      $font-family,\n      $file-path,\n      $asset-pipeline,\n      $file-formats,\n      $font-url-prefix\n    );\n  }\n",
+          "line": {
+            "start": 27,
+            "end": 50
+          }
+        }
+      }
+    ],
+    "example": [
+      {
+        "type": "scss",
+        "code": "$global-font-file-formats: woff2 woff;"
+      }
+    ],
+    "type": "list | string",
+    "access": "public",
+    "group": [
+      "undefined"
+    ],
+    "file": {
+      "path": "settings/_global-font-file-formats.scss",
+      "name": "_global-font-file-formats.scss"
+    }
+  },
+  {
+    "description": "Global setting for the modular scale ratio\n\n",
+    "commentRange": {
+      "start": 3,
+      "end": 7
     },
     "context": {
       "type": "variable",
@@ -1943,17 +1656,32 @@
       "value": "$perfect-fourth",
       "scope": "default",
       "line": {
-        "start": 23,
-        "end": 23
+        "start": 9,
+        "end": 9
       }
     },
+    "see": [
+      {
+        "description": "Increments up or down a defined scale and returns an adjusted value. This helps establish consistent measurements and spacial relationships throughout your project. We provide a list of commonly used scales as [pre-defined variables](//github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/settings/_scales.scss).\n\n",
+        "context": {
+          "type": "function",
+          "name": "modular-scale",
+          "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check AFTER scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
+          "line": {
+            "start": 55,
+            "end": 101
+          }
+        }
+      }
+    ],
+    "type": "number",
     "access": "public",
     "group": [
       "undefined"
     ],
     "file": {
-      "path": "settings/_scales.scss",
-      "name": "_scales.scss"
+      "path": "settings/_modular-scale.scss",
+      "name": "_modular-scale.scss"
     },
     "usedBy": [
       {
@@ -1961,38 +1689,53 @@
         "context": {
           "type": "function",
           "name": "modular-scale",
-          "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check after scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
+          "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check AFTER scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
           "line": {
-            "start": 52,
-            "end": 98
+            "start": 55,
+            "end": 101
           }
         }
       }
     ]
   },
   {
-    "description": "Global settings for the modular scale function\n",
+    "description": "Global setting for the modular scale base value\n\n",
     "commentRange": {
-      "start": 25,
-      "end": 25
+      "start": 11,
+      "end": 15
     },
     "context": {
       "type": "variable",
       "name": "modular-scale-base",
-      "value": "em($em-base)",
+      "value": "1em",
       "scope": "default",
       "line": {
-        "start": 27,
-        "end": 27
+        "start": 17,
+        "end": 17
       }
     },
+    "see": [
+      {
+        "description": "Increments up or down a defined scale and returns an adjusted value. This helps establish consistent measurements and spacial relationships throughout your project. We provide a list of commonly used scales as [pre-defined variables](//github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/settings/_scales.scss).\n\n",
+        "context": {
+          "type": "function",
+          "name": "modular-scale",
+          "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check AFTER scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
+          "line": {
+            "start": 55,
+            "end": 101
+          }
+        }
+      }
+    ],
+    "type": "number",
     "access": "public",
     "group": [
       "undefined"
     ],
     "file": {
-      "path": "settings/_scales.scss",
-      "name": "_scales.scss"
+      "path": "settings/_modular-scale.scss",
+      "name": "_modular-scale.scss"
     },
     "usedBy": [
       {
@@ -2000,10 +1743,10 @@
         "context": {
           "type": "function",
           "name": "modular-scale",
-          "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check after scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
+          "code": "\n  $v1: nth($value, 1);\n  $v2: nth($value, length($value));\n  $value: $v1;\n\n  // scale $v2 to just above $v1\n  @while $v2 > $v1 {\n    $v2: ($v2 / $ratio); // will be off-by-1\n  }\n  @while $v2 < $v1 {\n    $v2: ($v2 * $ratio); // will fix off-by-1\n  }\n\n  // check AFTER scaling $v2 to prevent double-counting corner-case\n  $double-stranded: $v2 > $v1;\n\n  @if $increment > 0 {\n    @for $i from 1 through $increment {\n      @if $double-stranded and ($v1 * $ratio) > $v2 {\n        $value: $v2;\n        $v2: ($v2 * $ratio);\n      } @else {\n        $v1: ($v1 * $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @if $increment < 0 {\n    // adjust $v2 to just below $v1\n    @if $double-stranded {\n      $v2: ($v2 / $ratio);\n    }\n\n    @for $i from $increment through -1 {\n      @if $double-stranded and ($v1 / $ratio) < $v2 {\n        $value: $v2;\n        $v2: ($v2 / $ratio);\n      } @else {\n        $v1: ($v1 / $ratio);\n        $value: $v1;\n      }\n    }\n  }\n\n  @return $value;\n",
           "line": {
-            "start": 52,
-            "end": 98
+            "start": 55,
+            "end": 101
           }
         }
       }
